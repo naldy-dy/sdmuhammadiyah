@@ -11,14 +11,21 @@
     <link rel="stylesheet" href="{{url('public')}}/assets/css/bootstrap.css">
 
     <link rel="stylesheet" href="{{url('public')}}/assets/vendors/iconly/bold.css">
+    <link rel="stylesheet" href="{{url('public')}}/assets/vendors/summernote/summernote-lite.min.css">
 
     <link rel="stylesheet" href="{{url('public')}}/assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
     <link rel="stylesheet" href="{{url('public')}}/assets/vendors/bootstrap-icons/bootstrap-icons.css">
     <link rel="stylesheet" href="{{url('public')}}/assets/css/app.css">
     <link rel="shortcut icon" href="{{url('public')}}/assets/images/favicon.svg" type="image/x-icon">
+    <link rel="stylesheet" href="{{url('public')}}/assets/vendors/fontawesome/all.min.css">
 </head>
 
 <body>
+    <style>
+        .float-right{
+            float: right !important;
+        }
+    </style>
     <div id="app">
         <div id="sidebar" class="active">
             <div class="sidebar-wrapper active">
@@ -46,7 +53,7 @@
             </header>
 
             <div class="page-heading">
-                <h3>SD Muhammadiyah Pontianak</h3>
+                <h3>SD Muhammadiyah 3 Pontianak</h3>
             </div>
             <div class="page-content">
                @yield('content')
@@ -72,6 +79,31 @@
     <script src="{{url('public')}}/assets/js/pages/dashboard.js"></script>
 
     <script src="{{url('public')}}/assets/js/main.js"></script>
+    <script src="{{url('public')}}/assets/vendors/fontawesome/all.min.js"></script>
+
+    <script src="{{url('public')}}/assets/vendors/jquery/jquery.min.js"></script>
+    <script src="{{url('public')}}/assets/vendors/summernote/summernote-lite.min.js"></script>
+    <script>
+        $('.summernote').summernote({
+            tabsize: 2,
+            height: 120,
+        })
+        $("#hint").summernote({
+            height: 100,
+            toolbar: false,
+            placeholder: 'type with apple, orange, watermelon and lemon',
+            hint: {
+                words: ['apple', 'orange', 'watermelon', 'lemon'],
+                match: /\b(\w{1,})$/,
+                search: function (keyword, callback) {
+                    callback($.grep(this.words, function (item) {
+                        return item.indexOf(keyword) === 0;
+                    }));
+                }
+            }
+        });
+
+    </script>
 </body>
 
 </html>

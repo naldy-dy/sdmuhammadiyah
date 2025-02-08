@@ -23,6 +23,10 @@ return new class extends Migration
             $table->text(column: 'no_wa')->nullable();
             $table->text(column: 'maps')->nullable();
             $table->text(column: 'logo_sekolah')->nullable();
+            $table->text(column: 'judul')->nullable();
+            $table->text(column: 'deskripsi')->nullable();
+            $table->text(column: 'waktu_pelajaran')->nullable();
+            $table->text(column: 'alamat_lengkap')->nullable();
             $table->timestamps();
         });
     }

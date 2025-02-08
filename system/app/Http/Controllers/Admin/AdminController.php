@@ -7,5 +7,7 @@ use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
-    //
+   function beranda(){
+    return view('admin.beranda');
+   }
 }

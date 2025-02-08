@@ -1,121 +1,123 @@
+@php
+
+if (!function_exists('checkRouteActive')) {
+    function checkRouteActive($route)
+    {
+        return request()->is($route) ? 'active' : '';
+    }
+}
+@endphp
 <ul class="menu">
-                        <li class="sidebar-title">Menu</li>
+    <li class="sidebar-title">Menu</li>
 
-                        <li class="sidebar-item active ">
-                            <a href="index.html" class='sidebar-link'>
-                                <i class="bi bi-grid-fill"></i>
-                                <span>Dashboard</span>
-                            </a>
-                        </li>
+    <li class="sidebar-item {{ checkRouteActive('index') }}">
+        <a href="{{ url('index') }}" class='sidebar-link'>
+            <i class="bi bi-grid-fill"></i>
+            <span>Dashboard</span>
+        </a>
+    </li>
 
-                        <li class="sidebar-item  has-sub">
-                            <a href="#" class='sidebar-link'>
-                                <i class="bi bi-stack"></i>
-                                <span>Data Sekolah</span>
-                            </a>
-                            <ul class="submenu ">
-                                <li class="submenu-item ">
-                                    <a href="component-alert.html">Data Siswa</a>
-                                </li>
-                                <li class="submenu-item ">
-                                    <a href="component-badge.html">Data Guru</a>
-                                </li>
-                                <li class="submenu-item ">
-                                    <a href="component-button.html">Data Kelas</a>
-                                </li>
-                                
-                            </ul>
-                        </li>
+    <li class="sidebar-item has-sub {{ checkRouteActive('admin/data-sekolah*') }}">
+        <a href="#" class='sidebar-link'>
+            <i class="bi bi-stack"></i>
+            <span>Data Sekolah</span>
+        </a>
+        <ul class="submenu">
+            <li class="submenu-item {{ checkRouteActive('admin/data-sekolah/siswa') }}">
+                <a href="{{ url('admin/data-sekolah/siswa') }}">Data Siswa</a>
+            </li>
+            <li class="submenu-item {{ checkRouteActive('admin/data-sekolah/guru') }}">
+                <a href="{{ url('admin/data-sekolah/guru') }}">Data Guru</a>
+            </li>
+            <li class="submenu-item {{ checkRouteActive('admin/data-sekolah/kelas') }}">
+                <a href="{{ url('admin/data-sekolah/kelas') }}">Data Kelas</a>
+            </li>
+        </ul>
+    </li>
 
-                        <li class="sidebar-item  has-sub">
-                            <a href="#" class='sidebar-link'>
-                                <i class="bi bi-stack"></i>
-                                <span>Program Sekolah</span>
-                            </a>
-                            <ul class="submenu ">
-                                <li class="submenu-item ">
-                                    <a href="component-alert.html">Program Unggulan</a>
-                                </li>
+    <li class="sidebar-item has-sub {{ checkRouteActive('admin/program*') }}">
+        <a href="#" class='sidebar-link'>
+            <i class="bi bi-stack"></i>
+            <span>Program Sekolah</span>
+        </a>
+        <ul class="submenu">
+            <li class="submenu-item {{ checkRouteActive('admin/program-unggulan') }}">
+                <a href="{{ url('admin/program-unggulan') }}">Program Unggulan</a>
+            </li>
+            <li class="submenu-item {{ checkRouteActive('admin/extrakurikuler') }}">
+                <a href="{{ url('admin/extrakurikuler') }}">Extrakurikuler</a>
+            </li>
+            <li class="submenu-item {{ checkRouteActive('admin/sarana-prasarana') }}">
+                <a href="{{ url('admin/sarana-prasarana') }}">Sarana & Prasarana</a>
+            </li>
+            <li class="submenu-item {{ checkRouteActive('admin/kalender-akademik') }}">
+                <a href="{{ url('admin/kalender-akademik') }}">Kalender Akademik</a>
+            </li>
+        </ul>
+    </li>
 
-                                <li class="submenu-item ">
-                                    <a href="component-badge.html">Extrakurikuler</a>
-                                </li>
+    <li class="sidebar-item has-sub {{ checkRouteActive('admin/media*') }}">
+        <a href="#" class='sidebar-link'>
+            <i class="bi bi-collection-fill"></i>
+            <span>Media</span>
+        </a>
+        <ul class="submenu">
+            <li class="submenu-item {{ checkRouteActive('admin/galeri') }}">
+                <a href="{{ url('admin/galeri') }}">Galeri Kegiatan</a>
+            </li>
+            <li class="submenu-item {{ checkRouteActive('admin/slider') }}">
+                <a href="{{ url('admin/slider') }}">Slide Website</a>
+            </li>
+        </ul>
+    </li>
 
-                                <li class="submenu-item ">
-                                    <a href="component-badge.html">Sarana & Prasarana</a>
-                                </li>
+    <li class="sidebar-item has-sub {{ checkRouteActive('admin/berita*') }}">
+        <a href="#" class='sidebar-link'>
+            <i class="bi bi-grid-1x2-fill"></i>
+            <span>Publikasi</span>
+        </a>
+        <ul class="submenu">
+            <li class="submenu-item {{ checkRouteActive('admin/berita') }}">
+                <a href="{{ url('admin/berita') }}">Berita</a>
+            </li>
+            <li class="submenu-item {{ checkRouteActive('admin/artikel') }}">
+                <a href="{{ url('admin/artikel') }}">Artikel</a>
+            </li>
+            <li class="submenu-item {{ checkRouteActive('admin/informasi') }}">
+                <a href="{{ url('admin/informasi') }}">Informasi</a>
+            </li>
+            <li class="submenu-item {{ checkRouteActive('admin/penghargaan-siswa') }}">
+                <a href="{{ url('admin/penghargaan-siswa') }}">Penghargaan Siswa</a>
+            </li>
+        </ul>
+    </li>
 
-                                <li class="submenu-item ">
-                                    <a href="component-badge.html">Kalender Akademik</a>
-                                </li>
-                                
-                            </ul>
-                        </li>
+    <li class="sidebar-item has-sub {{ checkRouteActive('admin/ppdb*') }}">
+        <a href="#" class='sidebar-link'>
+            <i class="bi bi-grid-1x2-fill"></i>
+            <span>PPDB</span>
+        </a>
+        <ul class="submenu">
+            <li class="submenu-item {{ checkRouteActive('admin/ppdb') }}">
+                <a href="{{ url('admin/ppdb', date('Y')) }}">Data Penerimaan Siswa</a>
+            </li>
+            <li class="submenu-item {{ checkRouteActive('admin/ppdb/config') }}">
+                <a href="{{ url('admin/ppdb/config') }}">Config PPDB</a>
+            </li>
+        </ul>
+    </li>
 
-                        <li class="sidebar-item  has-sub">
-                            <a href="#" class='sidebar-link'>
-                                <i class="bi bi-collection-fill"></i>
-                                <span>Media</span>
-                            </a>
-                            <ul class="submenu ">
-                                <li class="submenu-item ">
-                                    <a href="extra-component-avatar.html">Galeri Kegiatan</a>
-                                </li>
-                                <li class="submenu-item ">
-                                    <a href="extra-component-sweetalert.html">Slide Website</a>
-                                </li>
-                                
-                            </ul>
-                        </li>
+    <li class="sidebar-item {{ checkRouteActive('admin/profil-sekolah*') }}">
+        <a href="{{ url('admin/profil-sekolah') }}" class='sidebar-link'>
+            <i class="bi bi-file-earmark-medical-fill"></i>
+            <span>Profil Sekolah</span>
+        </a>
+    </li>
 
-                        <li class="sidebar-item  has-sub">
-                            <a href="#" class='sidebar-link'>
-                                <i class="bi bi-grid-1x2-fill"></i>
-                                <span>Publikasi</span>
-                            </a>
-                            <ul class="submenu ">
-                                <li class="submenu-item ">
-                                    <a href="layout-default.html">Berita</a>
-                                </li>
-                                <li class="submenu-item ">
-                                    <a href="layout-vertical-1-column.html">Artikel</a>
-                                </li>
-                                <li class="submenu-item ">
-                                    <a href="layout-vertical-navbar.html">Informasi</a>
-                                </li>
-                                <li class="submenu-item ">
-                                    <a href="layout-horizontal.html">Penghargaan Siswa</a>
-                                </li>
-                            </ul>
-                        </li>
-
-                        <li class="sidebar-item  has-sub">
-                            <a href="#" class='sidebar-link'>
-                                <i class="bi bi-grid-1x2-fill"></i>
-                                <span>PPDB</span>
-                            </a>
-                            <ul class="submenu ">
-                                <li class="submenu-item ">
-                                    <a href="layout-default.html">Data Penerimaan Siswa</a>
-                                </li>
-                                <li class="submenu-item ">
-                                    <a href="layout-vertical-1-column.html">Config PPDB</a>
-                                </li>
-                            </ul>
-                        </li>
-
-                        <li class="sidebar-item  ">
-                            <a href="{{url('admin/profil-sekolah')}}" class='sidebar-link'>
-                                <i class="bi bi-file-earmark-medical-fill"></i>
-                                <span>Profil Sekolah</span>
-                            </a>
-                        </li>
-
-                        <li class="sidebar-item  ">
-                            <a href="form-layout.html" class='sidebar-link'>
-                                <i class="bi bi-people-fill"></i>
-                                <span>Profil Akun</span>
-                            </a>
-                        </li>
-
-                    </ul>
+    <li class="sidebar-item {{ checkRouteActive('admin/profil-akun') }}">
+        <a href="{{ url('admin/profil-akun') }}" class='sidebar-link'>
+            <i class="bi bi-people-fill"></i>
+            <span>Profil Akun</span>
+        </a>
+    </li>
+</ul>

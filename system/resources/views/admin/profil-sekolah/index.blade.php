@@ -3,9 +3,11 @@
 
 <div class="card">
     <div class="card-header">
-        <h3>{{$title ?? 'SD Muhammadiyah Pontianak'}}</h3>
+    <div class="d-flex justify-content-between align-items-center">
+            <h3>{{ $title ?? '' }}</h3>
+            <a href="{{url('admin/profil-sekolah/edit')}}" class="btn btn-primary"><i class="fa fa-pencil-alt"></i> Update Profil</a>
+        </div>
 
-        <a href="{{url('admin/profil-sekolah/edit')}}" class="btn btn-primary float-right"> Update Profil</a>
     </div>
 </div>
 @endsection
