@@ -13,7 +13,7 @@ class Berita extends Model
           $file = request()->file('cover');
           $destination = 'public/app/publikasi/';
           $randomStr = Str::random(9);
-          $filename = $destination.'-'.$randomStr. "-berita." . $file->extension();
+          $filename = $destination.date('Y').'-'.$randomStr. "-berita." . $file->extension();
           $url = $file->move($destination, $filename);
           $this->cover = $filename;
           $this->save;

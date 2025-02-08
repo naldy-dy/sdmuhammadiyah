@@ -59,47 +59,78 @@
             <a href=""><i class="fa fa-user"></i></a>
         </div>
         <ul class="main-menu">
-            <li class="active"><a href="{{url('/')}}">Beranda</a></li>
-           
-            <li class="dropdown">
-                <a href="#">Profil <i class="fa fa-caret-down"></i></a>
-                <ul class="dropdown-menu">
-                    <li><a href="{{url('sambutan-kepala-sekolah')}}">Sambutan Kepala Sekolah</a></li>
-                    <li><a href="{{url('tentang')}}">Tentang Sekolah</a></li>
-                    <li><a href="{{url('visi-misi')}}">Visi & Misi</a></li>
-                   
-                </ul>
-            </li>
+    <li class="{{ request()->is('/') ? 'active' : '' }}">
+        <a href="{{ url('/') }}">Beranda</a>
+    </li>
 
-			<li class="dropdown">
-                <a href="#">Sekolah Kami <i class="fa fa-caret-down"></i></a>
-                <ul class="dropdown-menu">
-				<li><a href="{{url('sarana-prasarana')}}">Sarana & Prasarana</a></li>
-                    <li><a href="{{url('program-unggulan')}}">Program Unggulan</a></li>
-                    <li><a href="{{url('extrakurikuler')}}">Extrakurikuler</a></li>
-                </ul>
+    <li class="dropdown">
+        <a href="#">Profil <i class="fa fa-caret-down"></i></a>
+        <ul class="dropdown-menu">
+            <li class="{{ request()->is('sambutan-kepala-sekolah') ? 'active' : '' }}">
+                <a href="{{ url('sambutan-kepala-sekolah') }}">Sambutan Kepala Sekolah</a>
             </li>
-
-			<li class="dropdown">
-                <a href="#">Informasi <i class="fa fa-caret-down"></i></a>
-                <ul class="dropdown-menu">
-                    <li><a href="{{url('kalender-akademik',date('Y'))}}">Kalender Akademik</a></li>
-                    <li><a href="{{url('ppdb')}}">PPDB</a></li>
-                    <li><a href="{{url('siswa-berprestasi')}}">Siswa Berprestasi</a></li>
-                </ul>
+            <li class="{{ request()->is('tentang') ? 'active' : '' }}">
+                <a href="{{ url('tentang') }}">Tentang Sekolah</a>
             </li>
-
-			<li><a href="{{url('berita')}}">Berita</a></li>
-			<li><a href="{{url('galeri')}}">Galeri</a></li>
-
-            <li class="dropdown">
-                <a href="#">Publikasi <i class="fa fa-caret-down"></i></a>
-                <ul class="dropdown-menu">
-                    <li><a href="{{url('informasi')}}">Informasi</a></li>
-                    <li><a href="{{url('artikel')}}">Artikel</a></li>
-                </ul>
+            <li class="{{ request()->is('visi-misi') ? 'active' : '' }}">
+                <a href="{{ url('visi-misi') }}">Visi & Misi</a>
             </li>
-            <li><a href="{{url('kontak')}}">Kontak</a></li>
         </ul>
+    </li>
+
+    <li class="dropdown {{ request()->is('sarana-prasarana', 'program-unggulan', 'extrakurikuler') ? 'active' : '' }}">
+        <a href="#">Sekolah Kami <i class="fa fa-caret-down"></i></a>
+        <ul class="dropdown-menu">
+            <li class="{{ request()->is('sarana-prasarana') ? 'active' : '' }}">
+                <a href="{{ url('sarana-prasarana') }}">Sarana & Prasarana</a>
+            </li>
+            <li class="{{ request()->is('program-unggulan') ? 'active' : '' }}">
+                <a href="{{ url('program-unggulan') }}">Program Unggulan</a>
+            </li>
+            <li class="{{ request()->is('extrakurikuler') ? 'active' : '' }}">
+                <a href="{{ url('extrakurikuler') }}">Extrakurikuler</a>
+            </li>
+        </ul>
+    </li>
+
+    <li class="dropdown {{ request()->is('kalender-akademik', 'ppdb', 'siswa-berprestasi') ? 'active' : '' }}">
+        <a href="#">Informasi <i class="fa fa-caret-down"></i></a>
+        <ul class="dropdown-menu">
+            <li class="{{ request()->is('kalender-akademik') ? 'active' : '' }}">
+                <a href="{{ url('kalender-akademik', date('Y')) }}">Kalender Akademik</a>
+            </li>
+            <li class="{{ request()->is('ppdb') ? 'active' : '' }}">
+                <a href="{{ url('ppdb') }}">PPDB</a>
+            </li>
+            <li class="{{ request()->is('siswa-berprestasi') ? 'active' : '' }}">
+                <a href="{{ url('siswa-berprestasi') }}">Siswa Berprestasi</a>
+            </li>
+        </ul>
+    </li>
+
+    <li class="{{ request()->is('berita*') ? 'active' : '' }}">
+        <a href="{{ url('berita') }}">Berita</a>
+    </li>
+    <li class="{{ request()->is('galeri') ? 'active' : '' }}">
+        <a href="{{ url('galeri') }}">Galeri</a>
+    </li>
+
+    <li class="dropdown {{ request()->is('informasi', 'artikel') ? 'active' : '' }}">
+        <a href="#">Publikasi <i class="fa fa-caret-down"></i></a>
+        <ul class="dropdown-menu">
+            <li class="{{ request()->is('informasi') ? 'active' : '' }}">
+                <a href="{{ url('informasi') }}">Informasi</a>
+            </li>
+            <li class="{{ request()->is('artikel') ? 'active' : '' }}">
+                <a href="{{ url('artikel') }}">Artikel</a>
+            </li>
+        </ul>
+    </li>
+
+    <li class="{{ request()->is('kontak') ? 'active' : '' }}">
+        <a href="{{ url('kontak') }}">Kontak</a>
+    </li>
+</ul>
+
     </div>
 </nav>

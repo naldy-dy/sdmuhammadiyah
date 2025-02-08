@@ -10,8 +10,8 @@ if (!function_exists('checkRouteActive')) {
 <ul class="menu">
     <li class="sidebar-title">Menu</li>
 
-    <li class="sidebar-item {{ checkRouteActive('index') }}">
-        <a href="{{ url('index') }}" class='sidebar-link'>
+    <li class="sidebar-item {{ checkRouteActive('admin/beranda') }}">
+        <a href="{{ url('admin/beranda') }}" class='sidebar-link'>
             <i class="bi bi-grid-fill"></i>
             <span>Dashboard</span>
         </a>
@@ -62,9 +62,14 @@ if (!function_exists('checkRouteActive')) {
             <span>Media</span>
         </a>
         <ul class="submenu">
-            <li class="submenu-item {{ checkRouteActive('admin/galeri') }}">
+        <li class="submenu-item {{ checkRouteActive('admin/galeri') }}">
                 <a href="{{ url('admin/galeri') }}">Galeri Kegiatan</a>
             </li>
+
+            <li class="submenu-item {{ checkRouteActive('admin/siswa-berprestasi') }}">
+                <a href="{{ url('admin/siswa-berprestasi') }}">Siswa Berprestasi</a>
+            </li>
+
             <li class="submenu-item {{ checkRouteActive('admin/slider') }}">
                 <a href="{{ url('admin/slider') }}">Slide Website</a>
             </li>
@@ -85,9 +90,6 @@ if (!function_exists('checkRouteActive')) {
             </li>
             <li class="submenu-item {{ checkRouteActive('admin/informasi') }}">
                 <a href="{{ url('admin/informasi') }}">Informasi</a>
-            </li>
-            <li class="submenu-item {{ checkRouteActive('admin/penghargaan-siswa') }}">
-                <a href="{{ url('admin/penghargaan-siswa') }}">Penghargaan Siswa</a>
             </li>
         </ul>
     </li>

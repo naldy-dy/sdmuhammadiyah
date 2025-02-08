@@ -13,10 +13,11 @@
     <div class="card-body">
         <form action="" method="post" enctype="multipart/form-data">
             @csrf
+            @method("PUT")
             <div class="row">
             <div class="col-md-12 mb-3">
                     <span>Judul Berita</span>
-                    <input type="text" class="form-control" required name="judul">
+                    <input type="text" class="form-control" required name="judul" value="{{$detail->judul}}">
                 </div>
 
                 <div class="col-md-12 mb-3">
@@ -27,7 +28,7 @@
 
                 <div class="col-md-12 mb-3">
                     <span>Isi Berita</span>
-                    <textarea name="isi" class="form-control summernote" id=""></textarea>
+                    <textarea name="isi" class="form-control summernote" id="">{!!nl2br($detail->isi)!!}</textarea>
                 </div>
 
                 <div class="col-md-12 mb-3">

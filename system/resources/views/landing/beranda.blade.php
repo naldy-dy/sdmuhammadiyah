@@ -130,58 +130,22 @@
 				<p>Informasi berita terbaru dari kami</p>
 			</div>=
 			<div class="row">
+				@foreach($list_berita->take(4) as $item)
 				<div class="col-xl-6">
 					<div class="blog-item">
-						<div class="blog-thumb set-bg" data-setbg="{{url('public')}}/assets-landing/img/blog/1.jpg"></div>
+						<div class="blog-thumb set-bg" data-setbg="{{url($item->cover)}}"></div>
 						<div class="blog-content">
-							<h4>Parents who try to be their children’s best friends</h4>
+							<b><a href="{{url('berita',$item->slug)}}" class="text-dark"> {{ucwords(Str::limit($item->judul,60))}}</a></b>
 							<div class="blog-meta">
 								<span><i class="fa fa-calendar-o"></i> 24 Mar 2018</span>
 								<span><i class="fa fa-user"></i> Owen Wilson</span>
 							</div>
-							<p>Integer luctus diam ac scerisque consectetur. Vimus dot euismod neganeco lacus sit amet. Aenean interdus mid vitae sed accumsan...</p>
+							<p>{!!nl2br(Str::limit($item->isi,100))!!}</p>
 						</div>
 					</div>
 				</div>
-				<div class="col-xl-6">
-					<div class="blog-item">
-						<div class="blog-thumb set-bg" data-setbg="{{url('public')}}/assets-landing/img/blog/2.jpg"></div>
-						<div class="blog-content">
-							<h4>Graduations could be delayed as external examiners</h4>
-							<div class="blog-meta">
-								<span><i class="fa fa-calendar-o"></i> 23 Mar 2018</span>
-								<span><i class="fa fa-user"></i> Owen Wilson</span>
-							</div>
-							<p>Integer luctus diam ac scerisque consectetur. Vimus dot euismod neganeco lacus sit amet. Aenean interdus mid vitae sed accumsan...</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-xl-6">
-					<div class="blog-item">
-						<div class="blog-thumb set-bg" data-setbg="{{url('public')}}/assets-landing/img/blog/3.jpg"></div>
-						<div class="blog-content">
-							<h4>Private schools adopt a Ucas style application system</h4>
-							<div class="blog-meta">
-								<span><i class="fa fa-calendar-o"></i> 24 Mar 2018</span>
-								<span><i class="fa fa-user"></i> Owen Wilson</span>
-							</div>
-							<p>Integer luctus diam ac scerisque consectetur. Vimus dot euismod neganeco lacus sit amet. Aenean interdus mid vitae sed accumsan...</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-xl-6">
-					<div class="blog-item">
-						<div class="blog-thumb set-bg" data-setbg="{{url('public')}}/assets-landing/img/blog/4.jpg"></div>
-						<div class="blog-content">
-							<h4>Cambridge digs in at the top of university league table</h4>
-							<div class="blog-meta">
-								<span><i class="fa fa-calendar-o"></i> 23 Mar 2018</span>
-								<span><i class="fa fa-user"></i> Owen Wilson</span>
-							</div>
-							<p>Integer luctus diam ac scerisque consectetur. Vimus dot euismod neganeco lacus sit amet. Aenean interdus mid vitae sed accumsan...</p>
-						</div>
-					</div>
-				</div>
+				@endforeach
+				
 			</div>
 		</div>
 	</section>
