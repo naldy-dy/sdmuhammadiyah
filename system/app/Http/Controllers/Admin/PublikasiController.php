@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Berita;
 use App\Models\Artikel;
+use App\Models\Informasi;
 use Str;
 use Illuminate\Pagination\Paginator;
 
@@ -107,6 +108,57 @@ class PublikasiController extends Controller
 
     function destroyArtikel(Artikel $artikel){
         $artikel->delete();
+        return back()->with('success','Berhasil');
+    }
+
+
+
+    function indexInformasi(){
+        $data['title'] = "Halaman Informasi";
+        $data['list_informasi'] = Informasi::orderBy('created_at','DESC')->paginate(12);
+        return view('admin.publikasi.informasi.index',$data);
+    }
+
+    function createInformasi(){
+        $data['title'] = "Halaman Informasi";
+        return view('admin.publikasi.informasi.create',$data);
+    }
+
+    function storeInformasi(){
+    	$informasi = new Informasi;
+    	$informasi->judul = request('judul');
+    	$informasi->isi = request('isi');
+    	$informasi->viewer = 0;
+    	$str = Str::random(5).'-'.Str::random(5);
+     	$informasi->slug = date('Y').'-'.Str::slug(request('judul')).'-'.$str;
+    	$informasi->handleUploadCover();
+    	$informasi->save();
+    	return redirect('admin/informasi')->with('success','Berhasil');
+    }
+
+    function updateInformasi(Informasi $informasi){
+    	$informasi->judul = request('judul');
+    	$informasi->isi = request('isi');
+    	$informasi->viewer = 0;
+    	$str = Str::random(5).'-'.Str::random(5);
+     	$informasi->slug = date('Y').'-'.Str::slug(request('judul')).'-'.$str;
+    	$informasi->handleUploadCover();
+    	$informasi->save();
+    	return redirect('admin/informasi')->with('success','Berhasil');
+    }
+    
+    function showInformasi(Informasi $informasi){
+        $data['detail'] = $informasi;
+        return view('admin.publikasi.informasi.show',$data);
+    }
+
+    function editInformasi(Informasi $informasi){
+        $data['detail'] = $informasi;
+        return view('admin.publikasi.informasi.edit',$data);
+    }
+
+    function destroyInformasi(Informasi $informasi){
+        $informasi->delete();
         return back()->with('success','Berhasil');
     }
 }

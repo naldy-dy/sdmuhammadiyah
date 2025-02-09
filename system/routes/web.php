@@ -21,8 +21,11 @@ Route::controller(IndexController::class)->group(function () {
     Route::get('tentang', 'tentang');
     Route::get('visi-misi', 'visiMisi');
     Route::get('galeri', 'galeri');
+    Route::get('siswa-berprestasi', 'siswaPrestasi');
     Route::get('kontak', 'kontak');
+    Route::get('sarana-prasarana', 'sarana');
     Route::get('guru', 'guru');
+    Route::get('informasi', 'informasi');
     Route::get('kalender-akademik/{tahun}', 'kalender');
     Route::get('sambutan-kepala-sekolah', 'sambutanKepsek');
 });
@@ -63,6 +66,14 @@ Route::prefix('admin')->group(function(){
             Route::get('artikel/{artikel:slug}/edit', 'editArtikel');
             Route::get('artikel/{artikel:slug}/show', 'showArtikel');
             Route::put('artikel/{artikel:slug}/edit', 'updateArtikel');
+
+            Route::get('informasi', 'indexInformasi');
+            Route::get('informasi/create', 'createInformasi');
+            Route::post('informasi/create', 'storeInformasi');
+            Route::get('informasi/{informasi:slug}/delete', 'destroyInformasi');
+            Route::get('informasi/{informasi:slug}/edit', 'editInformasi');
+            Route::get('informasi/{informasi:slug}/show', 'showInformasi');
+            Route::put('informasi/{informasi:slug}/edit', 'updateInformasi');
         });
 
         Route::controller(MediaController::class)->group(function () {

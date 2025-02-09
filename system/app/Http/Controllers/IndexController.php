@@ -9,6 +9,8 @@ use App\Models\Galeri;
 use App\Models\Artikel;
 use App\Models\Slider;
 use App\Models\Guru;
+use App\Models\Sarana;
+use App\Models\Informasi;
 use App\Models\PrestasiSiswa;
 use App\Models\KalenderAkademik;
 use Illuminate\Pagination\Paginator;
@@ -74,6 +76,12 @@ class IndexController extends Controller
         return view('landing.kontak',$data);
     }
 
+    function informasi(){
+        $data['title'] = "Data Informasi Sekolah";
+         $data['list_informasi'] = Informasi::orderBy('created_at','DESC')->paginate(8);
+        return view('landing.informasi',$data);
+    }
+
     function kalender($tahun){
         $data['title'] = "Kalender Akademik Sekolah";
         for ($bulan = 1; $bulan <= 12; $bulan++) {
@@ -89,5 +97,18 @@ class IndexController extends Controller
         $data['title'] = "Data Guru Sekolah";
         $data['list_guru'] = Guru::all();
         return view('landing.guru',$data);
+    }
+
+    function siswaPrestasi(){
+        $data['title'] = "Siswa Berprestasi";
+        $data['list_prestasi'] = PrestasiSiswa::orderBy('created_at','DESC')->paginate(12);
+        return view('landing.siswa-prestasi',$data);
+
+    }
+
+    function sarana(){
+        $data['title'] = "Sarana & Prasarana Sekolah Kami";
+        $data['list_sarana'] = Sarana::orderBy('created_at','DESC')->paginate(8);
+        return view('landing.sarana',$data);
     }
 }
