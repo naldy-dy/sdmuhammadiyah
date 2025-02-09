@@ -17,13 +17,13 @@
 						<div class="row">
 							<div class="col-md-12 mb-3">
 								<span>Judul Album Galeri</span>
-								<input type="text" required name="galeri_album" class="form-control">
+								<input type="text" required name="judul_kegiatan" class="form-control">
 							</div>
 
 							<div class="col-md-6 mb-3">
 								<div class="form-group">
 									<span>Gambar : </span>
-									<input type="file" class="form-control mb-3" required name="galeri_foto[]" accept="image/*" onchange="previewImage(event, this)">
+									<input type="file" class="form-control mb-3" required name="foto[]" accept="image/*" onchange="previewImage(event, this)">
 								</div>
 							</div>
 
@@ -55,6 +55,58 @@
 	</div>
 
 
+	<div class="row">
+		@foreach($list_galeri as $item)
+		<div class="col-md-6 mb-3">
+		<div id="carouselExampleCaptions{{$item->id}}" class="carousel slide" data-bs-ride="carousel">
+                                        <ol class="carousel-indicators">
+										@foreach(App\Models\GaleriDetail::where('galeri_id',$item->id)->get()->take(1) as $galeri)
+                                            <li data-bs-target="#carouselExampleCaptions{{$item->id}}" data-bs-slide-to="0"
+                                                class="active"></li>
+												@endforeach
+											@foreach(App\Models\GaleriDetail::where('galeri_id',$item->id)->get()->skip(1) as $galeri)
+                                            <li data-bs-target="#carouselExampleCaptions{{$item->id}}" data-bs-slide-to="{{$loop->iteration}}"></li>
+											@endforeach
+
+                                        </ol>
+                                        <div class="carousel-inner">
+										@foreach(App\Models\GaleriDetail::where('galeri_id',$item->id)->get()->take(1) as $galeri)
+                                            <div class="carousel-item active">
+                                                <img src="{{url($galeri->foto)}}" class="d-block w-100" style="max-height: 350px;" alt="...">
+                                                <div class="carousel-caption d-none d-md-block bg-dark">
+                                                    <h5>{{ucwords($item->judul_kegiatan)}}</h5>
+													<a href="{{url('admin/galeri',$item->id)}}/delete" class="btn btn-danger" onclick="return confirm('lanjutkan hapus?')"> <i class="fa fa-trash"></i> </a>
+                                                </div>
+                                            </div>
+											@endforeach
+											@foreach(App\Models\GaleriDetail::where('galeri_id',$item->id)->get()->skip(1) as $galeri)
+                                            <div class="carousel-item">
+                                                <img src="{{url($galeri->foto)}}" class="d-block w-100" style="max-height: 350px;" alt="...">
+                                                
+                                            </div>
+											@endforeach
+                                        </div>
+                                        <a class="carousel-control-prev" href="#carouselExampleCaptions{{$item->id}}" role="button"
+                                            data-bs-slide="prev">
+                                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                            <span class="visually-hidden">Previous</span>
+                                        </a>
+                                        <a class="carousel-control-next" href="#carouselExampleCaptions{{$item->id}}" role="button"
+                                            data-bs-slide="next">
+                                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                            <span class="visually-hidden">Next</span>
+                                        </a>
+                                    </div>
+		</div>
+		@endforeach
+
+
+		<div class="col-md-12">
+			{{$list_galeri->links()}}
+		</div>
+	</div>
+
+
 
     
 
@@ -73,7 +125,7 @@
 		<div class="col-md-6 mb-3">
 		<div class="form-group">
 		<span>Gambar: </span>
-		<input type="file" class="form-control" required name="galeri_foto[]" accept="image/*" onchange="previewImage(event, this)">
+		<input type="file" class="form-control" required name="foto[]" accept="image/*" onchange="previewImage(event, this)">
 		</div>
 		</div>
 

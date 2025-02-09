@@ -12,8 +12,14 @@ Route::controller(IndexController::class)->group(function () {
     Route::get('/', 'beranda');
     Route::get('berita', 'berita');
     Route::get('berita/{berita:slug}', 'beritaBaca');
+    
+    Route::get('artikel', 'artikel');
+    Route::get('artikel/{artikel:slug}', 'artikelBaca');
+
     Route::get('tentang', 'tentang');
     Route::get('visi-misi', 'visiMisi');
+    Route::get('galeri', 'galeri');
+    Route::get('kontak', 'kontak');
     Route::get('sambutan-kepala-sekolah', 'sambutanKepsek');
 });
 
@@ -51,5 +57,15 @@ Route::prefix('admin')->group(function(){
 
         Route::controller(MediaController::class)->group(function () {
             Route::get('galeri', 'indexGaleri');
+            Route::post('galeri', 'storeGaleri');
+            Route::get('galeri/{galeri}/delete', 'destroyGaleri');
+
+            Route::get('slider', 'indexSlider');
+            Route::post('slider', 'storeSlider');
+            Route::get('slider/{slider}/delete', 'destroySlider');
+
+            Route::get('siswa-berprestasi', 'indexPrestasi');
+            Route::post('siswa-berprestasi', 'storePrestasi');
+            Route::get('siswa-berprestasi/{prestasi}/delete', 'destroyPrestasi');
         });
 });

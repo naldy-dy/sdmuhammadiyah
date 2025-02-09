@@ -38,20 +38,21 @@
 				</div>
 			</div>
 
-			<!-- <div class="hs-item set-bg" data-setbg="{{url('public')}}/assets-landing/img/hero-slider/2.jpg">
+			@foreach($list_slider as $item)
+			<div class="hs-item set-bg" data-setbg="{{url($item->foto)}}">
 				<div class="hs-text">
 					<div class="container">
 						<div class="row">
-							<div class="col-lg-8">
-								<div class="hs-subtitle">Award Winning UNIVERSITY</div>
-								<h2 class="hs-title">An investment in knowledge pays the best interest.</h2>
-								<p class="hs-des">Education is not just about going to school and getting a degree. It's about widening your<br> knowledge and absorbing the truth about life. Knowledge is power.</p>
-								<div class="site-btn">GET STARTED</div>
+							<div class="col-lg-10">
+								<h2 class="hs-title">{{ucwords($item->judul)}}.</h2>
+								<p class="hs-des">{!!nl2br($item->deskripsi)!!}</p>
+								
 							</div>
 						</div>
 					</div>
 				</div>
-			</div> -->
+			</div>
+			@endforeach
 
 			
 
@@ -137,8 +138,8 @@
 						<div class="blog-content">
 							<b><a href="{{url('berita',$item->slug)}}" class="text-dark"> {{ucwords(Str::limit($item->judul,60))}}</a></b>
 							<div class="blog-meta">
-								<span><i class="fa fa-calendar-o"></i> 24 Mar 2018</span>
-								<span><i class="fa fa-user"></i> Owen Wilson</span>
+								<span><i class="fa fa-calendar-o"></i> {{$item->created_at}}</span>
+								<span><i class="fa fa-eye"></i> {{$item->viewer}}x</span>
 							</div>
 							<p>{!!nl2br(Str::limit($item->isi,100))!!}</p>
 						</div>

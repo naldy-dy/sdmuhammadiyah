@@ -57,7 +57,7 @@
 	</div>
 
 
-   @foreach($list_slider as $item)
+   @foreach($list_prestasi as $item)
    <div class="card mb-3">
     <div class="card-body">
         <div class="row">
@@ -68,7 +68,7 @@
                 <b>{{ucwords($item->judul)}}</b> <br>
                 {{$item->deskripsi}} <br><br>
 
-                <a href="{{url('admin/slider',$item->id)}}/delete" onclick="return confirm('Hapus data?')" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                <a href="{{url('admin/siswa-berprestasi',$item->id)}}/delete" onclick="return confirm('Hapus data?')" class="btn btn-danger"><i class="fa fa-trash"></i></a>
             </div>
         </div>
     </div>
@@ -76,7 +76,7 @@
    @endforeach
 
    <div class="col-md-12">
-    {{$list_slider->links()}}
+    {{$list_prestasi->links()}}
    </div>
 
 

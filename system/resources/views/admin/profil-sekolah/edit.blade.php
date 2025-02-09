@@ -92,7 +92,7 @@
                 </div>
 
                 <div class="col-md-12 mb-3">
-                    <textarea name="maps" class="form-control summernote" id="">{{$profil->maps}}</textarea>
+                    <textarea name="maps" class="form-control" id="">{{$profil->maps}}</textarea>
                 </div>
 
                 <div class="col-md-12">

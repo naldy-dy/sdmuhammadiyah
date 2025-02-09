@@ -17,3 +17,6 @@
 	<link rel="stylesheet" href="{{url('public')}}/assets-landing/css/animate.css"/>
 	<link rel="stylesheet" href="{{url('public')}}/assets-landing/css/owl.carousel.css"/>
 	<link rel="stylesheet" href="{{url('public')}}/assets-landing/css/style.css"/>
+
+
+	
