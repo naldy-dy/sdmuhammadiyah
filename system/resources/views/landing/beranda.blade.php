@@ -154,7 +154,7 @@
 
 
 	<!-- Fact section -->
-	<section class="fact-section spad set-bg" data-setbg="{{url('public')}}/assets-landing/img/fact-bg.jpg">
+	<section class="fact-section spad set-bg" data-setbg="{{url($profil->gambar_utama)}}">
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-6 col-lg-3 fact">
@@ -241,24 +241,17 @@
 
 	<!-- Gallery section -->
 	<div class="gallery-section">
+	<div class="section-title text-center">
+				<h3>Siswa Berprestasi</h3>
+				<p>Siswa yang berhasil mendapatkan prestasi Akademik dan Non Akademik</p>
+			</div>
 		<div class="gallery">
 			<div class="grid-sizer"></div>
-			
-			<div class="gallery-item gi-big set-bg" data-setbg="{{url('public')}}/assets-landing/img/gallery/1.jpg">
-				<a class="img-popup" href="img/gallery/1.jpg"><i class="ti-plus"></i></a>
+			@foreach($list_prestasi->take(4) as $item)
+			<div class="gallery-item gi-big set-bg" data-setbg="{{url($item->foto)}}">
+				<a class="img-popup" href="{{url($item->foto)}}"><i class="ti-plus"></i></a>
 			</div>
-
-			<div class="gallery-item gi-big set-bg" data-setbg="{{url('public')}}/assets-landing/img/gallery/1.jpg">
-				<a class="img-popup" href="img/gallery/1.jpg"><i class="ti-plus"></i></a>
-			</div>
-
-			<div class="gallery-item gi-big set-bg" data-setbg="{{url('public')}}/assets-landing/img/gallery/1.jpg">
-				<a class="img-popup" href="img/gallery/1.jpg"><i class="ti-plus"></i></a>
-			</div>
-
-			<div class="gallery-item gi-big set-bg" data-setbg="{{url('public')}}/assets-landing/img/gallery/1.jpg">
-				<a class="img-popup" href="img/gallery/1.jpg"><i class="ti-plus"></i></a>
-			</div>
+			@endforeach
 			
 		</div>
 	</div>

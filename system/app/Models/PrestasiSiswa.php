@@ -11,7 +11,7 @@ class PrestasiSiswa extends Model
     function handleUploadFoto(){
         if (request()->hasFile('foto')) {
           $file = request()->file('foto');
-          $destination = 'public/app/media/prestasi';
+          $destination = 'public/app/media/prestasi/';
           $randomStr = Str::random(9);
           $filename = $destination.date('Y').'-'.$randomStr. "-prestasi." . $file->extension();
           $url = $file->move($destination, $filename);

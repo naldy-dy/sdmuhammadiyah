@@ -8,6 +8,7 @@ use App\Models\Berita;
 use App\Models\Galeri;
 use App\Models\Artikel;
 use App\Models\Slider;
+use App\Models\PrestasiSiswa;
 use Illuminate\Pagination\Paginator;
 
 class IndexController extends Controller
@@ -15,6 +16,7 @@ class IndexController extends Controller
     function beranda(){
         $data['list_berita'] = Berita::orderBy('created_at','DESC')->get();
         $data['list_slider'] = Slider::orderBy('created_at','DESC')->get();
+        $data['list_prestasi'] = PrestasiSiswa::orderBy('created_at','DESC')->get();
         return view('landing.beranda',$data);
     }
 

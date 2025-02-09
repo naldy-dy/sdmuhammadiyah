@@ -16,8 +16,8 @@
 						@csrf
 						<div class="row">
 							<div class="col-md-12 mb-3">
-								<span>Judul Slider</span>
-								<input type="text" required name="judul" class="form-control">
+								<span>Nama Siswa</span>
+								<input type="text" required name="nama" class="form-control">
 							</div>
 
 							<div class="col-md-6 mb-3">
@@ -34,8 +34,8 @@
 							</div>
 
                             <div class="col-md-12 mb-3">
-                                <span>Deskripsi</span>
-                                <textarea name="deskripsi" class="form-control" id=""></textarea>
+                                <span>Judul Prestasi</span>
+                                <textarea name="judul" class="form-control" id=""></textarea>
                             </div>
 
 							
@@ -56,24 +56,22 @@
 		</div>
 	</div>
 
-
+<div class="row">
    @foreach($list_prestasi as $item)
-   <div class="card mb-3">
-    <div class="card-body">
-        <div class="row">
-            <div class="col-md-4">
-                <img src="{{url($item->foto)}}" width="100%" alt="">
-            </div>
-            <div class="col-md-8">
-                <b>{{ucwords($item->judul)}}</b> <br>
-                {{$item->deskripsi}} <br><br>
-
-                <a href="{{url('admin/siswa-berprestasi',$item->id)}}/delete" onclick="return confirm('Hapus data?')" class="btn btn-danger"><i class="fa fa-trash"></i></a>
-            </div>
+   <div class="col-md-3">
+    <div class="card mb-3">
+        <div class="card-body">
+        <img src="{{url($item->foto)}}" width="100%" alt=""> <br>
+        <center>
+            <b>{{ucwords($item->nama)}}</b>
+            <p>{{ucwords($item->judul)}}</p>
+        </center>
+        <a href="{{url('admin/siswa-berprestasi',$item->id)}}/delete" onclick="return confirm('Lanjutkan?')" class="btn btn-danger"><i class="fa fa-trash"></i></a>
         </div>
     </div>
    </div>
    @endforeach
+   </div>
 
    <div class="col-md-12">
     {{$list_prestasi->links()}}
