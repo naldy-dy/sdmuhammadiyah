@@ -126,7 +126,18 @@
 				<h3>Extrakurikuler Kami</h3>
 			</div>
 			<div class="row">
-				
+				@foreach($list_extra as $item)
+				<div class="col-md-3">
+					<div class="card">
+						<div class="card-body">
+							<center>
+								<img src="{{url($item->foto)}}" width="200px" style="border-radius:50% ;" height="200px" alt="">
+								<h4>{{ucwords($item->nama)}}</h4>
+							</center>
+						</div>
+					</div>
+				</div>
+				@endforeach
 			</div>
 		</div>
 	</section>
@@ -141,7 +152,7 @@
 				<p>Informasi berita terbaru dari kami</p>
 			</div>=
 			<div class="row">
-				@foreach($list_berita->take(4) as $item)
+				@foreach($list_berita->take(8) as $item)
 				<div class="col-xl-6">
 					<div class="blog-item">
 						<div class="blog-thumb set-bg" data-setbg="{{url($item->cover)}}"></div>
@@ -164,7 +175,7 @@
 
 
 	<!-- Fact section -->
-	<section class="fact-section spad set-bg" data-setbg="{{url($profil->gambar_utama)}}">
+	<!-- <section class="fact-section spad set-bg" data-setbg="{{url($profil->gambar_utama)}}">
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-6 col-lg-3 fact">
@@ -205,12 +216,12 @@
 				</div>
 			</div>
 		</div>
-	</section>
+	</section> -->
 	<!-- Fact section end-->
 
 
 	<!-- Event section -->
-	<section class="event-section spad">
+	<!-- <section class="event-section spad">
 		<div class="container">
 			<div class="section-title text-center">
 				<h3>Event & Kegiatan</h3>
@@ -245,7 +256,7 @@
 				</div>
 			</div>
 		</div>
-	</section>
+	</section> -->
 	<!-- Event section end -->
 
 

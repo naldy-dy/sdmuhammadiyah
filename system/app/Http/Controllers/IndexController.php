@@ -25,6 +25,7 @@ class IndexController extends Controller
         $data['list_berita'] = Berita::orderBy('created_at','DESC')->get();
         $data['list_slider'] = Slider::orderBy('created_at','DESC')->get();
         $data['list_prestasi'] = PrestasiSiswa::orderBy('created_at','DESC')->get();
+        $data['list_extra'] = Extrakurikuler::all();
         return view('landing.beranda',$data);
     }
 

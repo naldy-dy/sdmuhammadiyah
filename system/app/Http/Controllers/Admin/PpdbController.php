@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Ppdb;
+use App\Models\Siswa;
 
 class PpdbController extends Controller
 {
@@ -23,4 +24,10 @@ class PpdbController extends Controller
     	$ppdb->save();
     	return back()->with('success','Berhasil');
     }
+
+	function index($tahun){
+		$data['list_siswa'] = Siswa::where('status_ppdb',0)
+		->where('tahun_angkatan',$tahun)->get();
+		return view('admin.ppdb.index',$data);
+	}
 }

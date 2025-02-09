@@ -56,7 +56,7 @@
     <div class="container">
         <div class="nav-right">
             <a href=""><i class="fa fa-search"></i></a>
-            <a href=""><i class="fa fa-user"></i></a>
+            <a href="{{url('login')}}"><i class="fa fa-user"></i></a>
         </div>
         <ul class="main-menu">
     <li class="{{ request()->is('/') ? 'active' : '' }}">

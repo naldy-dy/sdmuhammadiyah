@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\DataSekolahController;
 use App\Http\Controllers\Admin\ProgramController;
 use App\Http\Controllers\Admin\PpdbController;
 use App\Http\Controllers\IndexController;
+use App\Http\Controllers\AuthController;
 use App\Models\Saranan;
 
 Route::controller(IndexController::class)->group(function () {
@@ -34,8 +35,14 @@ Route::controller(IndexController::class)->group(function () {
     Route::get('sambutan-kepala-sekolah', 'sambutanKepsek');
 });
 
+Route::controller(AuthController::class)->group(function () {
+        Route::get('login', 'login')->name('login');
+        Route::post('login', 'loginProses');
+        Route::get('logout', 'logout');
+    });
 
-Route::prefix('admin')->group(function(){
+
+Route::prefix('admin')->middleware('auth')->group(function(){
 
     Route::controller(ProfilSekolahController::class)->group(function () {
         Route::get('profil-sekolah', 'index');
@@ -50,6 +57,8 @@ Route::prefix('admin')->group(function(){
     Route::controller(PpdbController::class)->group(function () {
         Route::get('ppdb/config', 'config');
         Route::post('ppdb/config', 'storeConfig');
+
+        Route::get('ppdb/{tahun}', 'index');
     });
 
     Route::controller(DataSekolahController::class)->group(function () {

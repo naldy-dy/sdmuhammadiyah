@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="{{url('public')}}/assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
     <link rel="stylesheet" href="{{url('public')}}/assets/vendors/bootstrap-icons/bootstrap-icons.css">
     <link rel="stylesheet" href="{{url('public')}}/assets/css/app.css">
-    <link rel="shortcut icon" href="{{url('public')}}/assets/images/favicon.svg" type="image/x-icon">
+    <link href="{{$profil->logo_sekolah}}" rel="shortcut icon"/>
     <link rel="stylesheet" href="{{url('public')}}/assets/vendors/fontawesome/all.min.css">
 </head>
 

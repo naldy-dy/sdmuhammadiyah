@@ -28,5 +28,17 @@ class DatabaseSeeder extends Seeder
             'maps' => 'maps sekolah',
             'logo_sekolah' => 'maps sekolah',
         ]);
+
+        User::create([
+            'name' => 'Admin Sekolah',
+            'email' => 'admin@example.com',
+            'password' => bcrypt('admin'),
+        ]);
+
+        User::create([
+            'name' => 'Admin Sekolah',
+            'email' => 'sdmuhammadiyah3pontianak@gmail.com',
+            'password' => bcrypt('@Muhammadiyah3'),
+        ]);
     }
 }
