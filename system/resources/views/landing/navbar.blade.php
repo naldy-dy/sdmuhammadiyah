@@ -75,6 +75,11 @@
             <li class="{{ request()->is('visi-misi') ? 'active' : '' }}">
                 <a href="{{ url('visi-misi') }}">Visi & Misi</a>
             </li>
+
+            <li class="{{ request()->is('guru') ? 'active' : '' }}">
+                <a href="{{ url('guru') }}">Data Guru</a>
+            </li>
+            
         </ul>
     </li>
 

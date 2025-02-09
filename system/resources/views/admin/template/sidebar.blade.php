@@ -24,13 +24,11 @@ if (!function_exists('checkRouteActive')) {
         </a>
         <ul class="submenu">
             <li class="submenu-item {{ checkRouteActive('admin/data-sekolah/siswa') }}">
-                <a href="{{ url('admin/data-sekolah/siswa') }}">Data Siswa</a>
+                <a href="{{ url('admin/siswa') }}">Data Siswa</a>
             </li>
-            <li class="submenu-item {{ checkRouteActive('admin/data-sekolah/guru') }}">
-                <a href="{{ url('admin/data-sekolah/guru') }}">Data Guru</a>
-            </li>
-            <li class="submenu-item {{ checkRouteActive('admin/data-sekolah/kelas') }}">
-                <a href="{{ url('admin/data-sekolah/kelas') }}">Data Kelas</a>
+            
+            <li class="submenu-item {{ checkRouteActive('admin/guru') }}">
+                <a href="{{ url('admin/guru') }}">Data Guru</a>
             </li>
         </ul>
     </li>

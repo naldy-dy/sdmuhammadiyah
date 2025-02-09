@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\ProfilSekolahController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\PublikasiController;
 use App\Http\Controllers\Admin\MediaController;
+use App\Http\Controllers\Admin\DataSekolahController;
 use App\Http\Controllers\IndexController;
 
 
@@ -34,6 +35,12 @@ Route::prefix('admin')->group(function(){
 
     Route::controller(AdminController::class)->group(function () {
         Route::get('beranda', 'beranda');
+    });
+
+    Route::controller(DataSekolahController::class)->group(function () {
+        Route::get('guru', 'indexGuru');
+        Route::post('guru', 'storeGuru');
+        Route::get('guru/{guru}/delete', 'destroyGuru');
     });
 
         Route::controller(PublikasiController::class)->group(function () {
