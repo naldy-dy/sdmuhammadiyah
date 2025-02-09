@@ -1,4 +1,4 @@
-<title>SD Muhammadiyah Pontianak</title>
+<title>SD Muhammadiyah 3 Pontianak</title>
 	<meta charset="UTF-8">
 	<meta name="description" content="Naldy Project">
 	<meta name="keywords" content="Naldy Project, SD Muhammadiyah Pontianak">

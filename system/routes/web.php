@@ -28,6 +28,7 @@ Route::controller(IndexController::class)->group(function () {
     Route::get('sarana-prasarana', 'sarana');
     Route::get('guru', 'guru');
     Route::get('ppdb', 'ppdb');
+    Route::get('ppdb/{id}', 'showPpdb');
     Route::post('ppdb', 'storePpdb');
     Route::get('extrakurikuler', 'extra');
     Route::get('informasi', 'informasi');
@@ -59,9 +60,17 @@ Route::prefix('admin')->middleware('auth')->group(function(){
         Route::post('ppdb/config', 'storeConfig');
 
         Route::get('ppdb/{tahun}', 'index');
+        Route::get('ppdb/{tahun}/{siswa}', 'show');
+        Route::get('ppdb/{tahun}/{siswa}/tolak', 'tolak');
+        Route::get('ppdb/{tahun}/{siswa}/terima', 'terima');
     });
 
     Route::controller(DataSekolahController::class)->group(function () {
+        Route::get('siswa', 'indexSiswa');
+        Route::get('siswa/{siswa}/edit', 'editSiswa');
+        Route::put('siswa/{siswa}/update', 'updateSiswa');
+
+
         Route::get('guru', 'indexGuru');
         Route::post('guru', 'storeGuru');
         Route::get('guru/{guru}/delete', 'destroyGuru');

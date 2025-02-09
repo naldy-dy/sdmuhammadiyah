@@ -23,7 +23,7 @@
                     <td>{{$loop->iteration}}</td>
                     <td>
                         <a href="{{url('admin/ppdb',date('Y'))}}/{{$item->id}}" class="btn btn-dark"><i class="fa fa-eye"></i></a>
-                        <a href="{{url('admin/ppdb',date('Y'))}}/{{$item->id}}/terima" onclick="return confirm('Lanjutkan Terima')" class="btn btn-success"><i class="fa fa-check"></i></a>
+                        <a href="{{url('admin/siswa')}}/{{$item->id}}/edit" class="btn btn-success"><i class="fa fa-edit"></i></a>
                         <a href="{{url('admin/ppdb',date('Y'))}}/{{$item->id}}/tolak" onclick="return confirm('Lanjutkan Tolak')" class="btn btn-danger"><i class="fa fa-trash"></i></a>
                     </td>
                     <td>{{strtoupper($item->nama_lengkap)}}</td>

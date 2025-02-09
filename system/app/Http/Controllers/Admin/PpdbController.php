@@ -30,4 +30,20 @@ class PpdbController extends Controller
 		->where('tahun_angkatan',$tahun)->get();
 		return view('admin.ppdb.index',$data);
 	}
+
+	function show($tahun, Siswa $siswa){
+		$data['siswa'] = $siswa;
+		return view('admin.ppdb.show',$data);
+	}
+
+	function tolak($tahun, Siswa $siswa){
+		$siswa->delete();
+		return back()->with('success','Berhasil');
+	}
+
+	function terima($tahun, Siswa $siswa){
+		$siswa->status_ppdb = 1;
+		$siswa->save();
+		return back()->with('success','Berhasil');
+	}
 }

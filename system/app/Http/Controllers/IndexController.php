@@ -215,6 +215,15 @@ class IndexController extends Controller
         }
         
         $ppdb->save();
-        return back()->with('success','Berhasil terdaftar');
+        $encrypt = encrypt($ppdb->id);
+        $url = 'ppdb/'.$encrypt;
+        return redirect($url)->with('success','Berhasil terdaftar');
+    }
+
+    function showPpdb($id){
+        $data['title'] = "Detail Pendaftaran Anda";
+        $id = decrypt($id);
+        $data['siswa'] = Siswa::findOrFail($id);
+        return view('landing.ppdb-hasil',$data);
     }
 }
