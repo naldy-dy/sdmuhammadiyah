@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Sarana;
 use App\Models\KalenderAkademik;
+use App\Models\Extrakurikuler;
 use Illuminate\Pagination\Paginator;
 
 
@@ -55,5 +56,27 @@ class ProgramController extends Controller
      function destroyKalender($tahun, KalenderAkademik $kalender){
         $kalender->delete();
         return back()->with('success','Berhasil');
+     }
+
+
+
+     function indexExtra(){
+        $data['title'] = "Sarana & Prasarana Sekolah";
+        $data['list_extra'] = Extrakurikuler::orderBy('created_at','DESC')->paginate(10);
+        return view('admin.program.extrakurikuler.index',$data);
+    }
+
+    function storeExtra(){
+        $sarana = new Extrakurikuler;
+         $sarana->nama = request('nama');
+         $sarana->deskripsi = request('deskripsi');
+         $sarana->handleUploadFoto();
+         $sarana->save();
+          return back()->with('success','Berhasil');
+     }
+ 
+     function destroyExtra(Extrakurikuler $extra){ 
+         $extra->delete();
+         return back()->with('success','Berhasil');
      }
 }

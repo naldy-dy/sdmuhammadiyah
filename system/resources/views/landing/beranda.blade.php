@@ -65,23 +65,33 @@
 	<section class="counter-section">
 		<div class="container">
 			<div class="row">
+			@if($ppdb->tanggal_mulai <= date('Y-m-d') && $ppdb->tanggal_selesai >= date('Y-m-d'))
 				<div class="col-lg-7 col-md-6">
 					<div class="big-icon">
 						<i class="fa fa-graduation-cap"></i>
 					</div>
 					<div class="counter-content">
-						<h2>Pembukaan PPDB Dalam Waktu</h2>
-						<p><i class="fa fa-calendar-o"></i>07:00 PM - 09:00 PM</p>
+						<h2>Pembukaan PPDB Sedang Berlangsung</h2>
+						<p><i class="fa fa-calendar-o"></i> {{ $ppdb->tanggal_mulai }} S/D {{ $ppdb->tanggal_selesai }}</p>
 					</div>
 				</div>
 				<div class="col-lg-5 col-md-6">
-					<div class="counter">
-						<div class="counter-item"><h4>20</h4>Days</div>
-						<div class="counter-item"><h4>08</h4>Hrs</div>
-						<div class="counter-item"><h4>40</h4>Mins</div>
-						<div class="counter-item"><h4>56</h4>secs</div>
+				<a href="{{url('ppdb')}}" class="btn btn-warning btn-lg float-right mt-3">Daftar PPDB Sekarang</a>
+				</div>
+			@else
+			<div class="col-lg-7 col-md-6">
+					<div class="big-icon">
+						<i class="fa fa-graduation-cap"></i>
+					</div>
+					<div class="counter-content">
+						<h2>Kontak Admin</h2>
+						<p><i class="fa fa-calendar-o"></i> Mempunyai pertanyaan? silahkan kontak admin </p>
 					</div>
 				</div>
+				<div class="col-lg-5 col-md-6">
+				<a href="https://wa.me/62{{$profil->no_wa}}" target="_blank" class="btn btn-success btn-lg float-right mt-3"><i class="fa fa-phone"></i> Kontak Admin</a>
+				</div>
+			@endif
 			</div>
 		</div>
 	</section>

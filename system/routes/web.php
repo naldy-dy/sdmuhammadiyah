@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\PublikasiController;
 use App\Http\Controllers\Admin\MediaController;
 use App\Http\Controllers\Admin\DataSekolahController;
 use App\Http\Controllers\Admin\ProgramController;
+use App\Http\Controllers\Admin\PpdbController;
 use App\Http\Controllers\IndexController;
 use App\Models\Saranan;
 
@@ -25,6 +26,9 @@ Route::controller(IndexController::class)->group(function () {
     Route::get('kontak', 'kontak');
     Route::get('sarana-prasarana', 'sarana');
     Route::get('guru', 'guru');
+    Route::get('ppdb', 'ppdb');
+    Route::post('ppdb', 'storePpdb');
+    Route::get('extrakurikuler', 'extra');
     Route::get('informasi', 'informasi');
     Route::get('kalender-akademik/{tahun}', 'kalender');
     Route::get('sambutan-kepala-sekolah', 'sambutanKepsek');
@@ -41,6 +45,11 @@ Route::prefix('admin')->group(function(){
 
     Route::controller(AdminController::class)->group(function () {
         Route::get('beranda', 'beranda');
+    });
+
+    Route::controller(PpdbController::class)->group(function () {
+        Route::get('ppdb/config', 'config');
+        Route::post('ppdb/config', 'storeConfig');
     });
 
     Route::controller(DataSekolahController::class)->group(function () {
@@ -99,5 +108,9 @@ Route::prefix('admin')->group(function(){
             Route::get('kalender-akademik/{tahun}', 'indexKalender');
             Route::post('kalender-akademik/{tahun}', 'storeKalender');
             Route::get('kalender-akademik/{tahun}/{kalender}/delete', 'destroyKalender');
+
+            Route::get('extrakurikuler', 'indexExtra');
+            Route::post('extrakurikuler', 'storeExtra');
+            Route::get('extrakurikuler/{extra}/delete', 'destroyExtra');
         });
 });

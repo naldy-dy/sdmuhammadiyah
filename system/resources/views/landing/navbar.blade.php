@@ -89,9 +89,9 @@
             <li class="{{ request()->is('sarana-prasarana') ? 'active' : '' }}">
                 <a href="{{ url('sarana-prasarana') }}">Sarana & Prasarana</a>
             </li>
-            <li class="{{ request()->is('program-unggulan') ? 'active' : '' }}">
+            <!-- <li class="{{ request()->is('program-unggulan') ? 'active' : '' }}">
                 <a href="{{ url('program-unggulan') }}">Program Unggulan</a>
-            </li>
+            </li> -->
             <li class="{{ request()->is('extrakurikuler') ? 'active' : '' }}">
                 <a href="{{ url('extrakurikuler') }}">Extrakurikuler</a>
             </li>
