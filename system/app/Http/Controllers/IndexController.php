@@ -8,7 +8,9 @@ use App\Models\Berita;
 use App\Models\Galeri;
 use App\Models\Artikel;
 use App\Models\Slider;
+use App\Models\Guru;
 use App\Models\PrestasiSiswa;
+use App\Models\KalenderAkademik;
 use Illuminate\Pagination\Paginator;
 
 class IndexController extends Controller
@@ -70,5 +72,22 @@ class IndexController extends Controller
     function kontak(){
         $data['title'] = "Kontak";
         return view('landing.kontak',$data);
+    }
+
+    function kalender($tahun){
+        $data['title'] = "Kalender Akademik Sekolah";
+        for ($bulan = 1; $bulan <= 12; $bulan++) {
+            $namaBulan = strtolower(date('F', mktime(0, 0, 0, $bulan, 1)));
+            $data['list_' . $namaBulan] = KalenderAkademik::whereYear('tanggal', $tahun)
+                ->whereMonth('tanggal', $bulan)
+                ->get();
+        }
+        return view('landing.kalender-akademik',$data);
+    }
+
+    function guru(){
+        $data['title'] = "Data Guru Sekolah";
+        $data['list_guru'] = Guru::all();
+        return view('landing.guru',$data);
     }
 }

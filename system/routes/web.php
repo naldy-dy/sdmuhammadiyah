@@ -6,8 +6,9 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\PublikasiController;
 use App\Http\Controllers\Admin\MediaController;
 use App\Http\Controllers\Admin\DataSekolahController;
+use App\Http\Controllers\Admin\ProgramController;
 use App\Http\Controllers\IndexController;
-
+use App\Models\Saranan;
 
 Route::controller(IndexController::class)->group(function () {
     Route::get('/', 'beranda');
@@ -21,6 +22,8 @@ Route::controller(IndexController::class)->group(function () {
     Route::get('visi-misi', 'visiMisi');
     Route::get('galeri', 'galeri');
     Route::get('kontak', 'kontak');
+    Route::get('guru', 'guru');
+    Route::get('kalender-akademik/{tahun}', 'kalender');
     Route::get('sambutan-kepala-sekolah', 'sambutanKepsek');
 });
 
@@ -74,5 +77,16 @@ Route::prefix('admin')->group(function(){
             Route::get('siswa-berprestasi', 'indexPrestasi');
             Route::post('siswa-berprestasi', 'storePrestasi');
             Route::get('siswa-berprestasi/{prestasi}/delete', 'destroyPrestasi');
+        });
+
+        Route::controller(ProgramController::class)->group(function () {
+            Route::get('sarana-prasarana', 'indexSarana');
+            Route::post('sarana-prasarana', 'storeSarana');
+            Route::get('sarana-prasarana/{sarana}/delete', 'destroySarana');
+
+
+            Route::get('kalender-akademik/{tahun}', 'indexKalender');
+            Route::post('kalender-akademik/{tahun}', 'storeKalender');
+            Route::get('kalender-akademik/{tahun}/{kalender}/delete', 'destroyKalender');
         });
 });

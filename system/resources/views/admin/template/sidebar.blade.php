@@ -48,8 +48,8 @@ if (!function_exists('checkRouteActive')) {
             <li class="submenu-item {{ checkRouteActive('admin/sarana-prasarana') }}">
                 <a href="{{ url('admin/sarana-prasarana') }}">Sarana & Prasarana</a>
             </li>
-            <li class="submenu-item {{ checkRouteActive('admin/kalender-akademik') }}">
-                <a href="{{ url('admin/kalender-akademik') }}">Kalender Akademik</a>
+            <li class="submenu-item {{ checkRouteActive('admin/kalender-akademik',date('Y')) }}">
+                <a href="{{ url('admin/kalender-akademik',date('Y')) }}">Kalender Akademik</a>
             </li>
         </ul>
     </li>

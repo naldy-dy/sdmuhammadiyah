@@ -1,13 +1,13 @@
 @extends('admin.template.layout')
 @section('content')
-<button type="button" class="btn btn-primary mb-2" data-bs-toggle="modal" data-bs-target=".bd-example-modal-lg"> <i class="fa fa-plus"></i> Tambah Data
+<button type="button" class="btn btn-primary mb-2" data-bs-toggle="modal" data-bs-target=".bd-example-modal-lg"> <i class="fa fa-plus"></i> Sarana Sekolah
 	</button>
 
 	<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-hidden="true">
 		<div class="modal-dialog modal-lg">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title">Upload Data Guru</h5>
+					<h5 class="modal-title">Upload Sarana</h5>
 					<button type="button" class="btn-close" data-bs-dismiss="modal">
 					</button>
 				</div>
@@ -15,16 +15,10 @@
 					<form action="" method="post" enctype="multipart/form-data">
 						@csrf
 						<div class="row">
-                        <div class="col-md-12 mb-3">
-								<span>Nama Guru</span>
-								<input type="text" required name="nama" class="form-control">
+							<div class="col-md-12 mb-3">
+								<span>Nama Sarana</span>
+								<input type="text" required name="sarana" class="form-control">
 							</div>
-
-                            <div class="col-md-12 mb-3">
-								<span>Jabatan</span>
-								<input type="text" required name="jabatan" class="form-control">
-							</div>
-
 
 							<div class="col-md-6 mb-3">
 								<div class="form-group">
@@ -39,11 +33,10 @@
 								</center>
 							</div>
 
-                            
-
-							
-
-							
+                            <div class="col-md-12 mb-3">
+                                <span>Deskripsi</span>
+                                <textarea name="deskripsi" class="form-control summernote" id=""></textarea>
+                            </div>
 
 							<div class="col-md-12">
 								<button class="btn btn-primary" type="submit">Upload</button>
@@ -59,23 +52,28 @@
 		</div>
 	</div>
 
-<div class="row">
-   @foreach($list_guru as $item)
-   <div class="col-md-3">
-    <div class="card mb-3">
-        <div class="card-body">
-        <img src="{{url($item->foto)}}" width="100%" alt=""> <br>
-        <center>
-            <b>{{ucwords($item->nama)}}</b>
-            <p>({{ucwords($item->jabatan)}})</p>
-        </center>
-        <a href="{{url('admin/guru',$item->id)}}/delete" onclick="return confirm('Lanjutkan?')" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+
+   @foreach($list_sarana as $item)
+   <div class="card mb-3">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-4">
+                <img src="{{url($item->foto)}}" width="100%" alt="">
+            </div>
+            <div class="col-md-8">
+                <b>{{ucwords($item->sarana)}}</b> <br>
+                {!!nl2br($item->deskripsi)!!} <br><br>
+
+                <a href="{{url('admin/sarana-prasarana',$item->id)}}/delete" onclick="return confirm('Hapus data?')" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+            </div>
         </div>
     </div>
    </div>
    @endforeach
-   </div>
 
+   <div class="col-md-12">
+    {{$list_sarana->links()}}
+   </div>
 
 
 
