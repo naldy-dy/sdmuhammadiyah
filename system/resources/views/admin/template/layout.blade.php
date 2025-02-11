@@ -61,12 +61,12 @@
 
             <footer>
                 <div class="footer clearfix mb-0 text-muted">
-                    <div class="float-start">
+                    <div class="float-start ">
                         <p>{{date('Y')}} &copy; N-Project</p>
                     </div>
-                    <div class="float-end">
+                    <div class="float-end fixed-bottom">
                         <p>Develope By <span class="text-danger"></span> <a
-                                href="http://ahmadsaugi.com">Kayong Developer</a></p>
+                                href="#">Kayong Developer</a></p>
                     </div>
                 </div>
             </footer>
