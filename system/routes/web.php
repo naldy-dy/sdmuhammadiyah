@@ -53,6 +53,8 @@ Route::prefix('admin')->middleware('auth')->group(function(){
 
     Route::controller(AdminController::class)->group(function () {
         Route::get('beranda', 'beranda');
+        Route::get('profil-akun', 'profilAkun');
+        Route::post('profil-akun/ganti-password', 'gantiPassword');
     });
 
     Route::controller(PpdbController::class)->group(function () {

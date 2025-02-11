@@ -57,6 +57,22 @@
         });
     });
 </script>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<!-- Notifikasi -->
+@foreach(['success', 'warning', 'error', 'info'] as $status)
+@if (session($status))
+<script>
+  Swal.fire({
+    icon: "{{ $status }}",
+    title: "{{ Str::upper($status) }}",
+    text: "{{ session($status) }}!",
+    showConfirmButton: false,
+    timer: 15000
+})
+</script>
+@endif
+@endforeach
 	
 	<!--====== Javascripts & Jquery ======-->
 	<script src="{{url('public')}}/assets-landing/js/jquery-3.2.1.min.js"></script>

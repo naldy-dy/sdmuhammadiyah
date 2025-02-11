@@ -45,6 +45,8 @@
 	@include('landing.footer')
 	<!-- Footer section end-->
 
+	
+
 
 </body>
 </html>

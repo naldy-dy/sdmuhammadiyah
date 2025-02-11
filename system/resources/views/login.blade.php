@@ -21,7 +21,7 @@
                 <div id="auth-left">
                     <div class="auth-logo">
                         <a href="#"><img src="{{$profil->logo_sekolah}}" alt="Logo"></a>
-                         <h3>SD Muhammadiyah 3 Pontianak</h3>
+                        <h3>SD Muhammadiyah 3 Pontianak</h3>
                     </div>
                     <h4 >Masuk.</h4>
                     <p class=" mb-3">Silahkan masuk untuk mengelola data sekolah</p>
@@ -58,6 +58,22 @@
         </div>
 
     </div>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- Notifikasi -->
+    @foreach(['success', 'warning', 'error', 'info'] as $status)
+    @if (session($status))
+    <script>
+      Swal.fire({
+        icon: "{{ $status }}",
+        title: "{{ Str::upper($status) }}",
+        text: "{{ session($status) }}!",
+        showConfirmButton: false,
+        timer: 15000
+    })
+</script>
+@endif
+@endforeach
 </body>
 
 </html>

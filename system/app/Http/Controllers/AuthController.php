@@ -24,7 +24,7 @@ class AuthController extends Controller
         }
 
         // Jika gagal login
-        return back()->withErrors(['email' => 'Email atau password salah']);
+        return back()->with('error','Email/Password tidak cocok');
     }
 
     public function logout()
