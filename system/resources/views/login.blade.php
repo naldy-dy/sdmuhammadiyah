@@ -19,10 +19,9 @@
         <div class="row h-100">
             <div class="col-lg-5 col-12">
                 <div id="auth-left">
-                    <div class="auth-logo">
-                        <a href="#"><img src="{{$profil->logo_sekolah}}" alt="Logo"></a>
-                        <h3>SD Muhammadiyah 3 Pontianak</h3>
-                    </div>
+                        
+                    <a href="#"><img src="{{$profil->logo_sekolah}}" alt="Logo" class="mb-3" width="250px"></a>
+                
                     <h4 >Masuk.</h4>
                     <p class=" mb-3">Silahkan masuk untuk mengelola data sekolah</p>
 
