@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Guru;
 use App\Models\Siswa;
+use App\Imports\SiswaImport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class DataSekolahController extends Controller
 {
@@ -32,8 +34,43 @@ class DataSekolahController extends Controller
 
     function indexSiswa(){
         $data['title'] = "Data Siswa";
-        $data['list_siswa'] = Siswa::where('status_ppdb',1)->paginate(10);
+        $data['list_siswa'] = Siswa::where('status_ppdb',1)
+        ->orderBy('kelas','ASC')
+        ->orderBy('nama_lengkap','ASC')
+        ->paginate(25);
         return view('admin.data-sekolah.siswa.index',$data);
+    }
+
+    function filterKelas($kelas){
+       $data['list_siswa'] = Siswa::where('status_ppdb',1)
+       ->where('kelas',$kelas)
+        ->orderBy('nama_lengkap','ASC')
+       ->paginate(10);
+       return view('admin.data-sekolah.siswa.index',$data);
+
+    }
+
+     public function importSiswa(Request $request)
+    {
+        $request->validate([
+            'file' => 'required|mimes:xls,xlsx'
+        ]);
+
+        Excel::import(new SiswaImport, $request->file('file'));
+
+           $siswa = Siswa::orderBy('created_at', 'desc')
+       ->get();
+
+   $seen_nisn = []; 
+   foreach ($siswa as $data) {
+    if (in_array($data->nisn, $seen_nisn)) {
+        $data->delete();
+    } else {
+            $seen_nisn[] = $data->nisn;
+        }
+    }
+
+        return redirect()->back()->with('success', 'Data berhasil diimpor!');
     }
 
     function editSiswa(Siswa $siswa){

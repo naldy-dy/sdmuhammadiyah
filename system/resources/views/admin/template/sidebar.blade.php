@@ -19,7 +19,7 @@ if (!function_exists('checkRouteActive')) {
 
     <li class="sidebar-item has-sub {{ checkRouteActive('admin/data-sekolah*') }}">
         <a href="#" class='sidebar-link'>
-            <i class="bi bi-stack"></i>
+            <i class="fa fa-database"></i>
             <span>Data Sekolah</span>
         </a>
         <ul class="submenu">
@@ -35,7 +35,7 @@ if (!function_exists('checkRouteActive')) {
 
     <li class="sidebar-item has-sub {{ checkRouteActive('admin/program*') }}">
         <a href="#" class='sidebar-link'>
-            <i class="bi bi-stack"></i>
+            <i class="fa fa-book"></i>
             <span>Program Sekolah</span>
         </a>
         <ul class="submenu">
@@ -76,7 +76,7 @@ if (!function_exists('checkRouteActive')) {
 
     <li class="sidebar-item has-sub {{ checkRouteActive('admin/berita*') }}">
         <a href="#" class='sidebar-link'>
-            <i class="bi bi-grid-1x2-fill"></i>
+            <i class="fa fa-globe"></i>
             <span>Publikasi</span>
         </a>
         <ul class="submenu">
@@ -94,7 +94,7 @@ if (!function_exists('checkRouteActive')) {
 
     <li class="sidebar-item has-sub {{ checkRouteActive('admin/ppdb*') }}">
         <a href="#" class='sidebar-link'>
-            <i class="bi bi-grid-1x2-fill"></i>
+            <i class="fa fa-graduation-cap"></i>
             <span>PPDB</span>
         </a>
         <ul class="submenu">
@@ -118,6 +118,13 @@ if (!function_exists('checkRouteActive')) {
         <a href="{{ url('admin/profil-akun') }}" class='sidebar-link'>
             <i class="bi bi-people-fill"></i>
             <span>Profil Akun</span>
+        </a>
+    </li>
+
+      <li class="sidebar-item {{ checkRouteActive('admin/profil-akun') }}">
+        <a href="{{ url('logout') }}" onclick="return confirm('Yakin untuk keluar')" class='sidebar-link'>
+            <i class="fa fa-key"></i>
+            <span>Logout</span>
         </a>
     </li>
 </ul>
