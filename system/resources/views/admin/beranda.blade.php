@@ -22,6 +22,7 @@
 	<div class="card-body">
 		<div class="row">
 			<div class="col-md-6">
+				<b>Jumlah Siswa Aktif/Kelas</b>
 				<div id="chartContainer mt-5">
 					<canvas id="siswaChart" style="height:auto;"></canvas>
 				</div>
@@ -33,8 +34,8 @@
 						<div class="col-md-8">
 							<div class="card bg-primary">
 								<div class="card-body text-white ">
-									<h3 class="text-white">Total Siswa</h3>
-									<h1 class="text-white">{{$totalSiswa ?? 0}}</h1>
+									<h4 class="text-white">Total Siswa</h4>
+									<h3 class="text-white">{{$totalSiswa ?? 0}}</h3>
 								</div>
 							</div>
 						</div>
@@ -42,8 +43,8 @@
 						<div class="col-md-8">
 							<div class="card bg-primary">
 								<div class="card-body text-white ">
-									<h3 class="text-white">Total Laki-laki</h3>
-									<h1 class="text-white">{{$totalSiswa ?? 0}}</h1>
+									<h4 class="text-white">Total Laki-laki</h4>
+									<h3 class="text-white">{{$totalLaki ?? 0}}</h3>
 								</div>
 							</div>
 						</div>
@@ -51,11 +52,21 @@
 						<div class="col-md-8">
 							<div class="card bg-primary">
 								<div class="card-body text-white ">
-									<h3 class="text-white">Total Perempuan</h3>
-									<h1 class="text-white">{{$totalSiswa ?? 0}}</h1>
+									<h4 class="text-white">Total Perempuan</h4>
+									<h3 class="text-white">{{$totalPerempuan ?? 0}}</h3>
 								</div>
 							</div>
 						</div>
+
+						<div class="col-md-8">
+							<div class="card bg-primary">
+								<div class="card-body text-white ">
+									<h4 class="text-white">Total Alumni</h4>
+									<h3 class="text-white">{{$totalAlumni ?? 0}}</h3>
+								</div>
+							</div>
+						</div>
+
 					</center>
 				</div>
 			</div>
@@ -76,24 +87,24 @@
             ];
 
 	var siswaChart = new Chart(ctx, {
-            type: 'doughnut', // Ubah ke 'pie' jika ingin pie chart
-            data: {
-            	labels: @json($data->pluck('kelas')),
-            	datasets: [{
-            		label: 'Jumlah Siswa',
-            		data: @json($data->pluck('jumlah')),
-            		backgroundColor: colors,
-            		borderWidth: 1
-            	}]
-            },
-            options: {
-            	responsive: true,
-            	plugins: {
-            		legend: {
-            			position: 'bottom'
-            		}
-            	}
-            }
-        });
-    </script>
-    @endsection
+    type: 'pie', // Ubah ke 'pie' jika ingin pie chart
+    data: {
+        labels: @json($data->pluck('kelas')).map(kelas => "Kelas " + kelas), // Tambahkan "Kelas " sebelum setiap kelas
+        datasets: [{
+        	label: 'Jumlah Siswa',
+        	data: @json($data->pluck('jumlah')),
+        	backgroundColor: colors,
+        	borderWidth: 1
+        }]
+    },
+    options: {
+    	responsive: true,
+    	plugins: {
+    		legend: {
+    			position: 'bottom'
+    		}
+    	}
+    }
+});
+</script>
+@endsection

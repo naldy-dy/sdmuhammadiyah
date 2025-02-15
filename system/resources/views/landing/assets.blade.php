@@ -1,7 +1,7 @@
 <title>SD Muhammadiyah 3 Pontianak</title>
 	<meta charset="UTF-8">
-	<meta name="description" content="Naldy Project">
-	<meta name="keywords" content="Naldy Project, SD Muhammadiyah Pontianak">
+	<meta name="description" content="SD Muhammadiyah 3 pontianak, Developer By Naldy Project">
+	<meta name="keywords" content="SD Muhammadiyah Pontianak, Naldy Project, Kayong Developer ">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<!-- Favicon -->   
 	<link href="{{$profil->logo_sekolah}}" rel="shortcut icon"/>

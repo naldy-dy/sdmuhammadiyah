@@ -69,6 +69,7 @@ Route::prefix('admin')->middleware('auth')->group(function(){
 
     Route::controller(DataSekolahController::class)->group(function () {
         Route::get('siswa', 'indexSiswa');
+        Route::post('siswa/search', 'cariSiswa');
         Route::get('siswa/{kelas}', 'filterKelas');
         Route::post('siswa/import', 'importSiswa');
         Route::get('siswa/{siswa}/edit', 'editSiswa');

@@ -6,25 +6,34 @@
 <div class="card">
     <div class="card-body">
 
-        <div class="btn-group">
-            <div class="dropdown">
-              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Filter Kelas
-            </button> &nbsp;&nbsp;&nbsp;
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="{{url('admin/siswa')}}">Semua Kelas</a>
-                <a class="dropdown-item" href="{{url('admin/siswa/1')}}">Kelas 1</a>
-                <a class="dropdown-item" href="{{url('admin/siswa/2')}}">Kelas 2</a>
-                <a class="dropdown-item" href="{{url('admin/siswa/3')}}">Kelas 3</a>
-                <a class="dropdown-item" href="{{url('admin/siswa/4')}}">Kelas 4</a>
-                <a class="dropdown-item" href="{{url('admin/siswa/5')}}">Kelas 5</a>
-                <a class="dropdown-item" href="{{url('admin/siswa/6')}}">Kelas 6</a>
-            </div>
-        </div>
-
-        <button type="button" class="btn btn-primary mb-2" data-bs-toggle="modal" data-bs-target=".bd-example-modal-lg"> <i class="fa fa-file-excel"></i> Import Data
+        <div class="d-flex align-items-center gap-2 flex-wrap">
+    <!-- Dropdown Filter Kelas -->
+    <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Filter Kelas
         </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="{{ url('admin/siswa') }}">Semua Kelas</a>
+            <a class="dropdown-item" href="{{ url('admin/siswa/1') }}">Kelas 1</a>
+            <a class="dropdown-item" href="{{ url('admin/siswa/2') }}">Kelas 2</a>
+            <a class="dropdown-item" href="{{ url('admin/siswa/3') }}">Kelas 3</a>
+            <a class="dropdown-item" href="{{ url('admin/siswa/4') }}">Kelas 4</a>
+            <a class="dropdown-item" href="{{ url('admin/siswa/5') }}">Kelas 5</a>
+            <a class="dropdown-item" href="{{ url('admin/siswa/6') }}">Kelas 6</a>
+        </div>
     </div>
+
+    <!-- Button Import Data -->
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target=".bd-example-modal-lg">
+        <i class="fa fa-file-excel"></i> Import Data
+    </button>
+
+    <!-- Button Cari Siswa -->
+    <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target=".bd-example-modal">
+        <i class="fa fa-search"></i> Cari Siswa
+    </button>
+</div>
+
 
     <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-lg">
@@ -58,7 +67,49 @@
         </div>
     </div>
 
-    <div class="table-responsive">
+
+     <div class="modal fade bd-example-modal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Cari</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal">
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="" method="post">
+                        @csrf
+                        <div class="form-group">
+                            <span>Cari Nama/NISN Siswa</span>
+                            <input type="text" id="search" placeholder="Cari ..." class="form-control" required name="search">
+                        </div>
+                    </form>
+
+                    <div class="mt-3">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>NISN</th>
+                                <th>Nama Lengkap</th>
+                            </tr>
+                        </thead>
+                        <tbody id="resultTable">
+                            <tr class="no-data">
+                                <td colspan="2" class="text-center">Belum ada data</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger light" data-bs-dismiss="modal"> Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="table-responsive mt-5">
+        <b>Data Siswa</b>
         <table class="table table-hover table-striped table-bordered">
             <thead>
                 <tr>
@@ -103,4 +154,48 @@
     </div>
 </div>
 </div>
+
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  $(document).ready(function() {
+    $('#search').on('keyup', function() {
+        var value = $(this).val();
+
+        if (value.length > 0) {
+            $.ajax({
+                type: 'POST',
+                url: '{{ URL::to("admin/siswa/search") }}',
+                data: {
+                    "_token": "{{ csrf_token() }}",
+                    "search": value
+                },
+                success: function(response) {
+                    $('#resultTable').empty(); // Kosongkan tabel sebelum menambahkan hasil baru
+
+                    if (response.hasil.length > 0) {
+                        $.each(response.hasil, function(index, siswa) {
+                            var row = `<tr>
+                                        <td>${siswa.nisn}</td>
+                                        <td>${siswa.nama_lengkap}</td>
+                                        <td>
+                                            <a href="{{url('/admin/ppdb/2025/')}}/${siswa.id}" class="btn btn-info btn-sm">
+                                                Detail
+                                            </a>
+                                        </td>
+                                    </tr>`;
+                            $('#resultTable').append(row);
+                        });
+                    } else {
+                        $('#resultTable').append(`<tr class="no-data"><td colspan="3" class="text-center">Tidak ada data ditemukan</td></tr>`);
+                    }
+                }
+            });
+        } else {
+            $('#resultTable').html(`<tr class="no-data"><td colspan="3" class="text-center">Belum ada data</td></tr>`);
+        }
+    });
+  });
+</script>
 @endsection

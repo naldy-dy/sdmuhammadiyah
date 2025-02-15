@@ -128,4 +128,15 @@ class DataSekolahController extends Controller
        $siswa->save();
        return back()->with('success','Berhasil');
     }
+
+    function cariSiswa(Request $request){
+        $output = "";
+        $query = $request->input('search');
+        $casn['hasil'] = Siswa::where('nama_lengkap', 'like', "%$query%")
+        ->orWhere('nisn', 'like', "%$query%")
+        ->orWhere('no_kk', 'like', "%$query%")
+        ->orWhere('nik', 'like', "%$query%")
+        ->get();
+        return response()->json($casn);
+    }
 }

@@ -15,6 +15,22 @@ class AdminController extends Controller
                  ->groupBy('kelas')
                  ->orderBy('kelas')
                  ->get();
+
+                  $data['totalSiswa'] = Siswa::whereIn('kelas',[1,2,3,4,5,6])
+                 ->count();
+
+                 $data['totalAlumni'] = Siswa::whereNotIn('kelas',[1,2,3,4,5,6])
+                 ->count();
+
+                  $data['totalLaki'] = Siswa::whereIn('kelas',[1,2,3,4,5,6])
+                  ->where('jenis_kelamin','Laki-laki')
+                 ->count();
+
+                  $data['totalPerempuan'] = Siswa::whereIn('kelas',[1,2,3,4,5,6])
+                  ->where('jenis_kelamin','Perempuan')
+                 ->count();
+
+
     return view('admin.beranda',$data);
    }
 

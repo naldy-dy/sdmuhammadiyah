@@ -39,9 +39,9 @@ if (!function_exists('checkRouteActive')) {
             <span>Program Sekolah</span>
         </a>
         <ul class="submenu">
-            <li class="submenu-item {{ checkRouteActive('admin/program-unggulan') }}">
+            <!-- <li class="submenu-item {{ checkRouteActive('admin/program-unggulan') }}">
                 <a href="{{ url('admin/program-unggulan') }}">Program Unggulan</a>
-            </li>
+            </li> -->
             <li class="submenu-item {{ checkRouteActive('admin/extrakurikuler') }}">
                 <a href="{{ url('admin/extrakurikuler') }}">Extrakurikuler</a>
             </li>
@@ -121,7 +121,7 @@ if (!function_exists('checkRouteActive')) {
         </a>
     </li>
 
-      <li class="sidebar-item {{ checkRouteActive('admin/profil-akun') }}">
+      <li class="sidebar-item">
         <a href="{{ url('logout') }}" onclick="return confirm('Yakin untuk keluar')" class='sidebar-link'>
             <i class="fa fa-key"></i>
             <span>Logout</span>
