@@ -226,4 +226,9 @@ class IndexController extends Controller
         $data['siswa'] = Siswa::findOrFail($id);
         return view('landing.ppdb-hasil',$data);
     }
+
+    function developer(){
+        $data['title'] = "Developer Aplikasi";
+        return view('landing.developer',$data);
+    }
 }

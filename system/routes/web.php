@@ -20,6 +20,7 @@ Route::controller(IndexController::class)->group(function () {
     Route::get('artikel', 'artikel');
     Route::get('artikel/{artikel:slug}', 'artikelBaca');
 
+    Route::get('developer', 'developer');
     Route::get('tentang', 'tentang');
     Route::get('visi-misi', 'visiMisi');
     Route::get('galeri', 'galeri');
