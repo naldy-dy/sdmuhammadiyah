@@ -1,7 +1,7 @@
 <header class="header-section">
 		<div class="container">
 			<!-- logo -->
-			<a href="{{url('/')}}" class="site-logo"><img src="{{$profil->logo_sekolah ?? ''}}" width="250px" alt=""></a>
+			<a href="{{url('/')}}" class="site-logo"><img src="{{$profil->logo_sekolah ?? ''}}" width="230px" alt=""></a>
 			<div class="nav-switch">
 				<i class="fa fa-bars"></i>
 			</div>

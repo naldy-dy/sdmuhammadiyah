@@ -59,7 +59,7 @@
 
                 <div class="mb-5 col-md-8">
                     <span>Gambar Utama Website</span>
-                    <input type="file" class="form-control" name="gambar_utama" onchange="previewImageUtama(event)" required>
+                    <input type="file" class="form-control" name="gambar_utama" onchange="previewImageUtama(event)" >
                 </div>
 
                 <div class="mb-5 col-md-4">

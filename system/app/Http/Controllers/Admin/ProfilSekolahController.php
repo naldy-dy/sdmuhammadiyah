@@ -25,9 +25,17 @@ class ProfilSekolahController extends Controller
         $profil->visi = request('visi');
         $profil->misi = request('misi');
         $profil->sambutan_kepsek = request('sambutan_kepsek');
+         if (request()->hasFile('logo_sekolah')) {
+            $profil->handleUploadLogo();
+         }
+
+          if (request()->hasFile('foto_kepsek')) {
         $profil->handleUploadKepsek();
+    }
+     if (request()->hasFile('gambar_utama')) {
         $profil->handleUploadGambarUtama();
-        $profil->handleUploadLogo();
+    }
+        
         $profil->email = request('email');
         $profil->no_wa = request('no_wa');
         $profil->maps = request('maps');
