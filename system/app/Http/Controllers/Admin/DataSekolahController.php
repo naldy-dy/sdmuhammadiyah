@@ -61,14 +61,14 @@ class DataSekolahController extends Controller
            $siswa = Siswa::orderBy('created_at', 'desc')
        ->get();
 
-   $seen_nisn = []; 
-   foreach ($siswa as $data) {
-    if (in_array($data->nisn, $seen_nisn)) {
-        $data->delete();
-    } else {
-            $seen_nisn[] = $data->nisn;
-        }
-    }
+      $seen_nisn = []; 
+      foreach ($siswa as $data) {
+       if (in_array($data->nisn, $seen_nisn)) {
+           $data->delete();
+       } else {
+               $seen_nisn[] = $data->nisn;
+           }
+       }
 
         return redirect()->back()->with('success', 'Data berhasil diimpor!');
     }
